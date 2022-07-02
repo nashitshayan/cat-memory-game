@@ -72,8 +72,12 @@ img {
 	display: flex;
 	flex-direction: column;
 	gap: 1em;
+	cursor: pointer;
+	transition: transform 0.1s;
 }
-
+.card-wrapper:hover {
+	transform: scale(1.1);
+}
 .cat-img {
 	max-width: 200px;
 	height: 200px;

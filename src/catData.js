@@ -1,5 +1,5 @@
 import images from './importImages';
-const catDataLevelThree = [];
+const cats = [];
 const names = [
 	'Mudpie',
 	'Midnight',
@@ -20,10 +20,10 @@ const names = [
 ];
 
 for (let i = 0; i < 16; i++) {
-	let id = catDataLevelThree.length + 1;
+	let id = cats.length + 1;
 	let name = `cat-${id}.png`;
 	let url = images[name];
-	catDataLevelThree.push({
+	cats.push({
 		id: id,
 		url: url,
 		name: names[i],
@@ -31,7 +31,8 @@ for (let i = 0; i < 16; i++) {
 	});
 }
 
-const catDataLevelOne = catDataLevelThree.slice(0, 6);
-const catDataLevelTwo = catDataLevelThree.slice(0, 12);
+const levelOneCats = cats.slice(0, 6);
+const levelTwoCats = cats.slice(6, 12);
+const levelThreeCats = cats.slice(12);
 
-export { catDataLevelOne, catDataLevelTwo, catDataLevelThree };
+export { levelOneCats, levelTwoCats, levelThreeCats };

@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import Card from './Card';
 
 function Main({ cats, cardClickHandler, level }) {

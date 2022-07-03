@@ -3,12 +3,29 @@ import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
-import { catDataLevelOne, catDataLevelTwo, catDataLevelThree } from './catData';
+import { levelOneCats, levelTwoCats, levelThreeCats } from './catData';
 function App() {
-	const [cats, setCats] = useState(() => shuffleArray(catDataLevelOne));
 	const [score, setScore] = useState(0);
 	const [bestScore, setBestScore] = useState(0);
+	const [cats, setCats] = useState(() => shuffleArray(levelOneCats));
 	const [level, setLevel] = useState(0);
+	/**
+	 * initially, set cats to levelOneCats (6 cats)
+	 * when score gets to 6, then add levelTwoCats (6 cats)
+	 * when score gets to 12, add levelThreeCats(4 cats)
+	 */
+	// for different game levels
+	useEffect(() => {
+		if (score === 6) {
+			setCats((oldCats) => shuffleArray([...oldCats, ...levelTwoCats]));
+			setLevel(1);
+		}
+		if (score === 12) {
+			setCats((oldCats) => shuffleArray([...oldCats, ...levelThreeCats]));
+			setLevel(2);
+		}
+	}, [score]);
+
 	const checkClicked = (cardID) => {
 		let isClicked = false;
 		cats.forEach((cat) => {
@@ -37,20 +54,9 @@ function App() {
 			setCats((oldCats) =>
 				oldCats.map((cat) => ({ ...cat, isClicked: false })),
 			);
+			setLevel(0);
 		} else setScore(score + 1);
 	};
-
-	// for different game levels
-	useEffect(() => {
-		if (score === 6) {
-			setCats(shuffleArray(catDataLevelTwo));
-			setLevel(1);
-		}
-		if (score === 12) {
-			setCats(shuffleArray(catDataLevelThree));
-			setLevel(2);
-		}
-	}, [score]);
 
 	return (
 		<div className='app-wrapper'>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
+import Footer from './components/Footer';
 import { catDataLevelOne, catDataLevelTwo, catDataLevelThree } from './catData';
 function App() {
 	const [cats, setCats] = useState(() => shuffleArray(catDataLevelOne));
@@ -55,6 +56,7 @@ function App() {
 		<div className='app-wrapper'>
 			<Header score={score} bestScore={bestScore} />
 			<Main cats={cats} cardClickHandler={cardClickHandler} level={level} />
+			<Footer />
 		</div>
 	);
 }

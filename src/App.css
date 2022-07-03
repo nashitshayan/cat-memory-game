@@ -109,3 +109,13 @@ img {
 	padding: 0.25em;
 	background-color: var(--clr--accent-two);
 }
+
+footer {
+	background-color: var(--clr--secondary);
+	text-align: center;
+	padding: 1.5em;
+}
+
+footer a {
+	color: var(--clr--neutral);
+}

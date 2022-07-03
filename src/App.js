@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
-import { catData } from './catData';
+import { catDataLevelOne, catDataLevelTwo, catDataLevelThree } from './catData';
 function App() {
-	const [cats, setCats] = useState(() => shuffleArray(catData));
+	const [cats, setCats] = useState(() => shuffleArray(catDataLevelOne));
 	const [score, setScore] = useState(0);
 	const [bestScore, setBestScore] = useState(0);
-
+	const [level, setLevel] = useState(0);
 	const checkClicked = (cardID) => {
 		let isClicked = false;
 		cats.forEach((cat) => {
@@ -39,10 +39,22 @@ function App() {
 		} else setScore(score + 1);
 	};
 
+	// for different game levels
+	useEffect(() => {
+		if (score === 6) {
+			setCats(shuffleArray(catDataLevelTwo));
+			setLevel(1);
+		}
+		if (score === 12) {
+			setCats(shuffleArray(catDataLevelThree));
+			setLevel(2);
+		}
+	}, [score]);
+
 	return (
 		<div className='app-wrapper'>
 			<Header score={score} bestScore={bestScore} />
-			<Main cats={cats} cardClickHandler={cardClickHandler} />
+			<Main cats={cats} cardClickHandler={cardClickHandler} level={level} />
 		</div>
 	);
 }

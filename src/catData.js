@@ -27,6 +27,7 @@ for (let i = 0; i < 16; i++) {
 		id: id,
 		url: url,
 		name: names[i],
+		isClicked: false,
 	});
 }
 
